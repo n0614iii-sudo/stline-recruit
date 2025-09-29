@@ -21,12 +21,20 @@ export const renderer = jsxRenderer(({ children }) => {
         {/* Custom CSS */}
         <link href="/static/style.css" rel="stylesheet" />
         
+        {/* Google Fonts */}
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap" 
+          rel="stylesheet" 
+        />
+        
         <style>
           {`
-            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
-            
             body {
-              font-family: 'Noto Sans JP', sans-serif;
+              font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+              font-family: 'Inter', 'Noto Sans JP', sans-serif;
             }
             
             .gradient-text {
