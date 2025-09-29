@@ -1,21 +1,97 @@
-```txt
-npm install
-npm run dev
+# STLiNE トレーナー求人ページ
+
+## プロジェクト概要
+- **名前**: STLiNE求人ページ
+- **目標**: stretch & training STLiNEのトレーナー求人情報を効果的に伝える専用ページ
+- **主な機能**: 
+  - 給与・待遇情報の詳細表示
+  - 福利厚生パッケージの紹介
+  - オンライン応募フォーム
+  - レスポンシブデザイン
+
+## URLs
+- **開発環境**: https://3000-i6apcrpqjjvazozo7bbay-6532622b.e2b.dev
+- **GitHub**: (設定予定)
+- **本番環境**: (Cloudflare Pages デプロイ予定)
+
+## 求人情報概要
+
+### 給与体系
+- **未経験者**: 基本給220,000円 + みなし残業手当48,000円 = 月給268,000円
+- **経験者**: 基本給252,000円 + みなし残業手当48,000円 = 月給300,000円
+- **賞与**: 年2回
+- **その他**: 各種インセンティブ制度
+
+### 福利厚生
+#### 法定福利厚生
+- 健康保険（協会けんぽ）、厚生年金保険、雇用保険、労災保険完備
+- 介護保険（40歳以上）、子ども・子育て拠出金
+
+#### STLiNE オリジナル特典
+- ジム利用無料（自主トレ可）
+- 資格取得支援制度（NSCA, JATI等）
+- 家族・友人優待制度
+- プロテイン・サプリ支給＆社員割引
+- 住宅手当・交通費支給
+- 健康診断・予防接種全額負担
+
+## 技術構成
+
+### データアーキテクチャ
+- **フレームワーク**: Hono (TypeScript)
+- **スタイリング**: Tailwind CSS + カスタムCSS
+- **アイコン**: Font Awesome
+- **レスポンシブ**: モバイルファースト設計
+
+### 主な機能
+1. **メインビジュアル**: 企業理念とCTAボタン
+2. **給与情報**: 未経験者・経験者の詳細な給与体系
+3. **福利厚生**: 法定・オリジナル特典の詳細表示
+4. **応募フォーム**: 必須項目とバリデーション付き
+5. **API エンドポイント**: `/api/apply` (応募処理), `/api/benefits` (福利厚生詳細)
+
+## ユーザーガイド
+
+### 求職者向け
+1. ページ上部で給与・待遇情報を確認
+2. 福利厚生セクションでSTLiNE特典を確認
+3. 「今すぐ応募する」ボタンでフォームへ移動
+4. 必要事項を入力して応募完了
+
+### 管理者向け
+- 応募情報は `/api/apply` エンドポイントで処理
+- 福利厚生情報は `/api/benefits` で取得可能
+- フォーム送信時の処理はカスタマイズ可能
+
+## デプロイ情報
+- **プラットフォーム**: Cloudflare Pages (予定)
+- **開発状況**: ✅ 開発完了
+- **本番デプロイ**: ❌ 未実施
+- **最終更新**: 2025-09-29
+
+## 開発・運用コマンド
+
+```bash
+# 開発環境起動
+npm run build
+pm2 start ecosystem.config.cjs
+
+# ポート確認・クリーンアップ
+npm run clean-port
+
+# サービステスト
+npm run test
+
+# ビルド
+npm run build
+
+# デプロイ（設定後）
+npm run deploy:prod
 ```
 
-```txt
-npm run deploy
-```
-
-[For generating/synchronizing types based on your Worker configuration run](https://developers.cloudflare.com/workers/wrangler/commands/#types):
-
-```txt
-npm run cf-typegen
-```
-
-Pass the `CloudflareBindings` as generics when instantiation `Hono`:
-
-```ts
-// src/index.ts
-const app = new Hono<{ Bindings: CloudflareBindings }>()
-```
+## 今後の改善予定
+- [ ] 実際の応募処理システム連携
+- [ ] 管理者用ダッシュボード
+- [ ] 応募者データの自動メール送信
+- [ ] SEO最適化
+- [ ] アクセス解析導入
