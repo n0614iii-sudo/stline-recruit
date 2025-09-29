@@ -80,14 +80,14 @@ app.get('/', (c) => {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://page.gensparksite.com/v1/base64_upload/ffb9f84ddc9150d71ad576f72b7a9868" 
-                  alt="STLiNEでのトレーニング風景"
+                  src="https://page.gensparksite.com/v1/base64_upload/3e17d4b165cd80f7e318d357b2fbd3a3" 
+                  alt="STLiNE - Movement becomes art. 実際のトレーニング指導風景"
                   className="w-full h-96 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 text-white">
                   <p className="text-sm bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm">
-                    実際のトレーニング風景
+                    Movement becomes art - 実際の指導風景
                   </p>
                 </div>
               </div>
