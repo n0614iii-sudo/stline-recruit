@@ -59,12 +59,23 @@ app.get('/', (c) => {
                 >
                   今すぐ応募する
                 </button>
-                <button 
-                  onClick="scrollToRecruitInfo()" 
-                  className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold py-4 px-8 rounded-lg text-lg transition-all"
-                >
-                  募集要項を見る
-                </button>
+                <div className="flex gap-3">
+                  <button 
+                    onClick="scrollToRecruitInfo()" 
+                    className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold py-4 px-6 rounded-lg text-lg transition-all"
+                  >
+                    募集要項を見る
+                  </button>
+                  <a 
+                    href="https://lin.ee/rYDTWht" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all transform hover:scale-105 flex items-center"
+                  >
+                    <i className="fab fa-line mr-2"></i>
+                    LINE相談
+                  </a>
+                </div>
               </div>
             </div>
             <div className="relative">
@@ -319,13 +330,81 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* 応募フォーム */}
+      {/* 応募・問い合わせ */}
       <section id="application" className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold text-gray-900 mb-4">応募フォーム</h3>
-            <p className="text-xl text-gray-600">あなたのご応募をお待ちしています</p>
+            <h3 className="text-4xl font-bold text-gray-900 mb-4">応募・お問い合わせ</h3>
+            <p className="text-xl text-gray-600">お気軽にご連絡ください</p>
           </div>
+          
+          {/* 問い合わせ方法の選択肢 */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {/* 応募フォーム */}
+            <div className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i className="fas fa-edit text-2xl text-blue-600"></i>
+              </div>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">応募フォーム</h4>
+              <p className="text-sm text-gray-600 mb-4">
+                正式な応募はこちらから<br />
+                詳細情報を入力できます
+              </p>
+              <button 
+                onClick="document.querySelector('.application-form').scrollIntoView({behavior: 'smooth'})"
+                className="text-blue-600 font-medium hover:text-blue-700 text-sm"
+              >
+                下記フォームへ ↓
+              </button>
+            </div>
+            
+            {/* 公式LINE */}
+            <div className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i className="fab fa-line text-2xl text-green-600"></i>
+              </div>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">公式LINE</h4>
+              <p className="text-sm text-gray-600 mb-4">
+                気軽な質問・相談はこちら<br />
+                すぐに回答いたします
+              </p>
+              <a 
+                href="https://lin.ee/rYDTWht" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-green-600 font-medium hover:text-green-700 text-sm"
+              >
+                LINEで相談 <i className="fas fa-external-link-alt text-xs ml-1"></i>
+              </a>
+            </div>
+            
+            {/* 公式Instagram */}
+            <div className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i className="fab fa-instagram text-2xl text-purple-600"></i>
+              </div>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">公式Instagram</h4>
+              <p className="text-sm text-gray-600 mb-4">
+                職場の雰囲気をチェック<br />
+                DMでも気軽にご相談
+              </p>
+              <a 
+                href="https://www.instagram.com/stline__official" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-purple-600 font-medium hover:text-purple-700 text-sm"
+              >
+                Instagramを見る <i className="fas fa-external-link-alt text-xs ml-1"></i>
+              </a>
+            </div>
+          </div>
+          
+          {/* 応募フォーム */}
+          <div className="application-form">
+            <div className="text-center mb-8">
+              <h4 className="text-2xl font-bold text-gray-900 mb-2">正式応募フォーム</h4>
+              <p className="text-gray-600">下記の項目をご入力ください</p>
+            </div>
           
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <form className="space-y-6">
@@ -447,6 +526,7 @@ app.get('/', (c) => {
             </form>
           </div>
         </div>
+        </div>
       </section>
 
       {/* フッター */}
@@ -476,17 +556,68 @@ app.get('/', (c) => {
             </div>
             <div>
               <h4 className="text-lg font-bold mb-4">お問い合わせ</h4>
-              <p className="text-gray-400 mb-4">
+              <p className="text-gray-400 mb-6 leading-relaxed">
                 採用に関するお問い合わせは、<br />
-                上記の応募フォームをご利用ください。
+                以下の方法でお気軽にご連絡ください。
               </p>
+              
+              {/* 問い合わせ方法 */}
+              <div className="space-y-4 mb-6">
+                {/* 応募フォーム */}
+                <div className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors">
+                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                    <i className="fas fa-edit text-sm"></i>
+                  </div>
+                  <span className="text-sm">応募フォーム（上記）</span>
+                </div>
+                
+                {/* 公式LINE */}
+                <a 
+                  href="https://lin.ee/rYDTWht" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 text-gray-300 hover:text-green-400 transition-colors group"
+                >
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center group-hover:bg-green-400 transition-colors">
+                    <i className="fab fa-line text-sm"></i>
+                  </div>
+                  <span className="text-sm">公式LINE（気軽な相談）</span>
+                </a>
+                
+                {/* 公式Instagram */}
+                <a 
+                  href="https://www.instagram.com/stline__official" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 text-gray-300 hover:text-pink-400 transition-colors group"
+                >
+                  <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center group-hover:from-purple-400 group-hover:to-pink-400 transition-all">
+                    <i className="fab fa-instagram text-sm"></i>
+                  </div>
+                  <span className="text-sm">公式Instagram（職場の様子）</span>
+                </a>
+              </div>
+              
+              {/* ソーシャルリンク */}
               <div className="flex space-x-4">
-                <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
-                  <i className="fab fa-twitter text-sm"></i>
-                </div>
-                <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
-                  <i className="fab fa-instagram text-sm"></i>
-                </div>
+                <a 
+                  href="https://lin.ee/rYDTWht" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center transition-colors"
+                  title="公式LINE"
+                >
+                  <i className="fab fa-line text-white"></i>
+                </a>
+                <a 
+                  href="https://www.instagram.com/stline__official" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 rounded-full flex items-center justify-center transition-all"
+                  title="公式Instagram"
+                >
+                  <i className="fab fa-instagram text-white"></i>
+                </a>
               </div>
             </div>
           </div>
