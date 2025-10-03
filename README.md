@@ -138,3 +138,4 @@ npm run deploy:prod
 - [ ] 応募者データの自動メール送信
 - [ ] SEO最適化
 - [ ] アクセス解析導入# STLiNE採用サイト - Fri Oct  3 02:54:50 UTC 2025
+# デプロイ設定修正 - Fri Oct  3 02:57:18 UTC 2025
