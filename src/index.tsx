@@ -12,9 +12,23 @@ app.use('/api/*', cors())
 // メインページ - STLiNE トレーナー求人（実写版）
 app.get('/', (c) => {
   return c.render(
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900 relative">
+      {/* ジム風背景 */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-gray-800/90 to-black/95"></div>
+        <div 
+          className="absolute inset-0 opacity-15"
+          style={{
+            backgroundImage: `url('https://page.gensparksite.com/v1/base64_upload/db34a7769cd4aa0141a487985c8fb718')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
+      </div>
+      <div className="relative z-10">
       {/* ヘッダー */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      <header className="bg-gray-900/95 backdrop-blur-sm border-b border-gray-700 sticky top-0 z-50 shadow-xl">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -25,8 +39,8 @@ app.get('/', (c) => {
               />
             </div>
             <div className="hidden md:flex items-center space-x-6">
-              <span className="text-sm text-gray-600">採用情報</span>
-              <div className="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-medium animate-pulse">
+              <span className="text-sm text-gray-300">採用情報</span>
+              <div className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-full text-sm font-medium animate-pulse shadow-lg">
                 積極採用中！
               </div>
             </div>
@@ -35,33 +49,35 @@ app.get('/', (c) => {
       </header>
 
       {/* メインビジュアル */}
-      <section className="relative bg-white py-20 overflow-hidden">
+      <section className="relative py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <div className="inline-block bg-gradient-to-r from-blue-500/20 to-blue-600/20 backdrop-blur-sm text-blue-300 border border-blue-400/30 px-4 py-2 rounded-full text-sm font-medium mb-6">
                 全エリア積極採用中！
               </div>
-              <h1 className="text-5xl font-bold text-gray-900 leading-tight mb-6">
+              <h1 className="text-5xl font-bold text-white leading-tight mb-6">
                 一緒に健康な未来を
                 <br />
-                <span className="text-blue-600">創りませんか？</span>
+                <span className="text-blue-400">創りませんか？</span>
               </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
                 STLiNEは「すべての人を健康に導く」という理念のもと、<br />
                 トレーナーとして、人として成長できる環境を提供します。
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick="scrollToApplication()" 
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all transform hover:scale-105 shadow-lg"
+                <a 
+                  href="https://lin.ee/rYDTWht" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-block bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all transform hover:scale-105 shadow-xl"
                 >
-                  今すぐ応募する
-                </button>
+                  今すぐLINEで応募する
+                </a>
                 <div className="flex gap-3">
                   <button 
                     onClick="scrollToRecruitInfo()" 
-                    className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold py-4 px-6 rounded-lg text-lg transition-all"
+                    className="border-2 border-blue-400 text-blue-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 font-bold py-4 px-6 rounded-lg text-lg transition-all backdrop-blur-sm"
                   >
                     募集要項を見る
                   </button>
@@ -97,16 +113,15 @@ app.get('/', (c) => {
       </section>
 
       {/* STLiNEで働く魅力 - 実写版 */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-800/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">STLiNEで働く魅力</h2>
-            <p className="text-xl text-gray-600">実際のスタッフが語る職場環境</p>
+            <h2 className="text-4xl font-bold text-white mb-4">STLiNEで働く魅力</h2>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {/* 魅力1 - チームワーク */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-700/50 overflow-hidden hover:shadow-2xl transition-all hover:border-gray-600/50">
               <div className="relative h-64">
                 <img 
                   src="https://page.gensparksite.com/v1/base64_upload/a01f165daf384a99c378de26ce1b5243" 
@@ -119,48 +134,134 @@ app.get('/', (c) => {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed">
                   仲間との絆を大切にする職場環境。互いに支え合い、共に成長していけるチームワークを重視しています。
                 </p>
               </div>
             </div>
 
-            {/* 魅力2 - 充実の研修 */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            {/* 魅力2 - 充実した設備 */}
+            <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-700/50 overflow-hidden hover:shadow-2xl transition-all hover:border-gray-600/50">
               <div className="relative h-64">
                 <img 
                   src="https://page.gensparksite.com/v1/base64_upload/db34a7769cd4aa0141a487985c8fb718" 
-                  alt="トレーニング指導風景"
+                  alt="STLiNE - 充実したトレーニング設備"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="text-lg font-bold">丁寧な指導</h3>
+                  <h3 className="text-lg font-bold">充実した設備</h3>
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-gray-600 leading-relaxed">
-                  未経験からでも安心。NSCA、JATIなどの資格取得を全面サポート。先輩トレーナーからの丁寧な指導があります。
+                <p className="text-gray-300 leading-relaxed">
+                  最新のトレーニング機器と広々とした空間。プロフェッショナルな環境で、質の高い指導を提供できます。
                 </p>
               </div>
             </div>
 
-            {/* 魅力3 - 最新設備 */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            {/* 魅力3 - キャリア成長 */}
+            <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-700/50 overflow-hidden hover:shadow-2xl transition-all hover:border-gray-600/50">
               <div className="relative h-64">
                 <img 
-                  src="https://page.gensparksite.com/v1/base64_upload/155d7e9ea914c5e63da7b7205b0334d6" 
-                  alt="最新のトレーニング設備"
+                  src="https://page.gensparksite.com/v1/base64_upload/ff0f6f59e7ed5351ef521db64a396ca4" 
+                  alt="STLiNE - 丁寧なカウンセリング"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="text-lg font-bold">最新設備</h3>
+                  <h3 className="text-lg font-bold">キャリア成長</h3>
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-gray-600 leading-relaxed">
-                  最新のトレーニング機器を完備。快適な職場環境で、お客様に最高のサービスを提供できます。
+                <p className="text-gray-300 leading-relaxed">
+                  若い会社だからこそ実現できる、スピード昇進と責任あるポジション。事業担当責任者への道も開かれています。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* キャリアパス・成長機会 */}
+      <section className="py-20 bg-gradient-to-r from-gray-800/60 to-gray-700/60 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold text-white mb-4">若い会社だから実現できるキャリア成長</h3>
+            <p className="text-xl text-gray-300">スピード昇進と責任あるポジションへの道</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-700/50 p-8">
+                <h4 className="text-2xl font-bold text-white mb-6">明確なキャリアパス</h4>
+                <div className="space-y-4">
+                  <div className="flex items-center p-4 bg-blue-600/20 backdrop-blur-sm rounded-lg">
+                    <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-4">1</div>
+                    <div>
+                      <h5 className="font-bold text-white">トレーナー</h5>
+                      <p className="text-sm text-gray-300">基礎スキル習得・資格取得</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center p-4 bg-green-600/20 backdrop-blur-sm rounded-lg">
+                    <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold mr-4">2</div>
+                    <div>
+                      <h5 className="font-bold text-white">シニアトレーナー</h5>
+                      <p className="text-sm text-gray-300">専門性向上・後輩指導</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center p-4 bg-purple-600/20 backdrop-blur-sm rounded-lg">
+                    <div className="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold mr-4">3</div>
+                    <div>
+                      <h5 className="font-bold text-white">事業担当責任者</h5>
+                      <p className="text-sm text-gray-300">店舗運営・事業企画</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="space-y-6">
+              <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-700/50 p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-10 h-10 bg-blue-500 mr-4 flex items-center justify-center transform rotate-45">
+                    <div className="w-4 h-4 bg-white transform -rotate-45"></div>
+                  </div>
+                  <h4 className="text-xl font-bold text-white">スピード昇進</h4>
+                </div>
+                <p className="text-gray-300 leading-relaxed">
+                  実力次第で入社1年目から責任あるポジションへ。若い会社だからこそ、あなたのやる気と能力を正当に評価します。
+                </p>
+              </div>
+              
+              <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-700/50 p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-10 h-10 mr-4 flex items-center justify-center">
+                    <div className="relative">
+                      <div className="w-8 h-6 bg-yellow-400 rounded-t-full"></div>
+                      <div className="w-10 h-2 bg-yellow-400 -mt-1"></div>
+                    </div>
+                  </div>
+                  <h4 className="text-xl font-bold text-white">事業責任者への道</h4>
+                </div>
+                <p className="text-gray-300 leading-relaxed">
+                  店舗運営、新規事業企画、マネジメントまで幅広い経験を積めます。将来の幹部候補として育成します。
+                </p>
+              </div>
+              
+              <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-700/50 p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-10 h-10 mr-4 flex items-center justify-center">
+                    <div className="relative">
+                      <div className="w-6 h-6 bg-green-400 rounded-full"></div>
+                      <div className="absolute top-7 left-2 w-2 h-2 bg-green-400"></div>
+                    </div>
+                  </div>
+                  <h4 className="text-xl font-bold text-white">挑戦する文化</h4>
+                </div>
+                <p className="text-gray-300 leading-relaxed">
+                  新しいアイデアやチャレンジを歓迎する環境。あなたの提案が事業を動かす可能性があります。
                 </p>
               </div>
             </div>
@@ -169,25 +270,26 @@ app.get('/', (c) => {
       </section>
 
       {/* 応募から入社までの流れ */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-800/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold text-gray-900 mb-4">応募から入社までの流れ</h3>
-            <p className="text-xl text-gray-600">スムーズな採用プロセスでお待ちしています</p>
+            <h3 className="text-4xl font-bold text-white mb-4">応募から入社までの流れ</h3>
           </div>
           
           <div className="grid md:grid-cols-4 gap-8">
             {/* Step 1 */}
             <div className="text-center">
-              <div className="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="bg-blue-600 text-white w-16 h-16 rounded-xl flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 1
               </div>
-              <div className="bg-gray-50 rounded-xl p-6 shadow-md">
-                <div className="w-12 h-12 mx-auto mb-4 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-laptop text-2xl text-blue-600"></i>
+              <div className="bg-gray-700/60 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-gray-600/50">
+                <div className="w-12 h-12 mx-auto mb-4 bg-blue-100 flex items-center justify-center">
+                  <div className="w-8 h-6 bg-blue-600 rounded-sm">
+                    <div className="w-8 h-1 bg-blue-400 rounded-t-sm"></div>
+                  </div>
                 </div>
-                <h4 className="font-bold text-gray-900 mb-2">WEB応募</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-bold text-white mb-2">WEB応募</h4>
+                <p className="text-sm text-gray-300">
                   応募フォームから<br />簡単エントリー
                 </p>
               </div>
@@ -195,15 +297,19 @@ app.get('/', (c) => {
 
             {/* Step 2 */}
             <div className="text-center">
-              <div className="bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="bg-green-600 text-white w-16 h-16 rounded-xl flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 2
               </div>
-              <div className="bg-gray-50 rounded-xl p-6 shadow-md">
-                <div className="w-12 h-12 mx-auto mb-4 bg-green-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-file-alt text-2xl text-green-600"></i>
+              <div className="bg-gray-700/60 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-gray-600/50">
+                <div className="w-12 h-12 mx-auto mb-4 bg-green-100 flex items-center justify-center">
+                  <div className="w-6 h-8 bg-green-600 rounded-sm">
+                    <div className="w-4 h-1 bg-white mt-2 mx-auto"></div>
+                    <div className="w-4 h-1 bg-white mt-1 mx-auto"></div>
+                    <div className="w-3 h-1 bg-white mt-1 mx-auto"></div>
+                  </div>
                 </div>
-                <h4 className="font-bold text-gray-900 mb-2">書類選考</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-bold text-white mb-2">書類選考</h4>
+                <p className="text-sm text-gray-300">
                   履歴書・職務経歴書の<br />審査（3営業日以内）
                 </p>
               </div>
@@ -211,15 +317,18 @@ app.get('/', (c) => {
 
             {/* Step 3 */}
             <div className="text-center">
-              <div className="bg-purple-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="bg-purple-600 text-white w-16 h-16 rounded-xl flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 3
               </div>
-              <div className="bg-gray-50 rounded-xl p-6 shadow-md">
-                <div className="w-12 h-12 mx-auto mb-4 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-comments text-2xl text-purple-600"></i>
+              <div className="bg-gray-700/60 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-gray-600/50">
+                <div className="w-12 h-12 mx-auto mb-4 bg-purple-100 flex items-center justify-center">
+                  <div className="relative">
+                    <div className="w-7 h-5 bg-purple-600 rounded-lg"></div>
+                    <div className="w-5 h-4 bg-purple-400 rounded-lg mt-1 ml-2"></div>
+                  </div>
                 </div>
-                <h4 className="font-bold text-gray-900 mb-2">面接</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-bold text-white mb-2">面接</h4>
+                <p className="text-sm text-gray-300">
                   人事・現場責任者との<br />面談（1-2回）
                 </p>
               </div>
@@ -227,15 +336,18 @@ app.get('/', (c) => {
 
             {/* Step 4 */}
             <div className="text-center">
-              <div className="bg-red-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="bg-red-600 text-white w-16 h-16 rounded-xl flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 4
               </div>
-              <div className="bg-gray-50 rounded-xl p-6 shadow-md">
-                <div className="w-12 h-12 mx-auto mb-4 bg-red-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-handshake text-2xl text-red-600"></i>
+              <div className="bg-gray-700/60 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-gray-600/50">
+                <div className="w-12 h-12 mx-auto mb-4 bg-red-100 flex items-center justify-center">
+                  <div className="relative">
+                    <div className="w-3 h-6 bg-red-600 rounded-full transform -rotate-12"></div>
+                    <div className="w-3 h-6 bg-red-400 rounded-full transform rotate-12 -mt-6 ml-4"></div>
+                  </div>
                 </div>
-                <h4 className="font-bold text-gray-900 mb-2">内定・研修</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-bold text-white mb-2">内定・研修</h4>
+                <p className="text-sm text-gray-300">
                   内定通知後<br />充実の研修プログラム
                 </p>
               </div>
@@ -245,39 +357,38 @@ app.get('/', (c) => {
       </section>
 
       {/* 実際の職場環境 */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-800/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold text-gray-900 mb-4">実際の職場環境</h3>
-            <p className="text-xl text-gray-600">STLiNEでの日常をご覧ください</p>
+            <h3 className="text-4xl font-bold text-white mb-4">実際の職場環境</h3>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             {/* プロフェッショナルな指導 */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-700/50 overflow-hidden">
               <img 
                 src="https://page.gensparksite.com/v1/base64_upload/ac15a6126fe2675618bb2b5d5a3e0e2a" 
                 alt="プロフェッショナルなトレーニング指導"
                 className="w-full h-64 object-cover"
               />
               <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-3">プロフェッショナルな指導</h4>
-                <p className="text-gray-600 leading-relaxed">
+                <h4 className="text-xl font-bold text-white mb-3">プロフェッショナルな指導</h4>
+                <p className="text-gray-300 leading-relaxed">
                   お客様一人ひとりに合わせたオーダーメイドトレーニング。丁寧なコンサルティングから始まる、質の高いサービスを提供しています。
                 </p>
               </div>
             </div>
 
             {/* チームで支える環境 */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-700/50 overflow-hidden">
               <img 
                 src="https://page.gensparksite.com/v1/base64_upload/8eb97a7fb6a8a84f283462f201f65cb3" 
                 alt="チームで協力するスタッフ"
                 className="w-full h-64 object-cover"
               />
               <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-3">チームで支える環境</h4>
-                <p className="text-gray-600 leading-relaxed">
+                <h4 className="text-xl font-bold text-white mb-3">チームで支える環境</h4>
+                <p className="text-gray-300 leading-relaxed">
                   スタッフ同士が協力し合い、お互いの成長を支援。経験豊富な先輩トレーナーがしっかりとサポートします。
                 </p>
               </div>
@@ -285,24 +396,33 @@ app.get('/', (c) => {
           </div>
 
           {/* 楽しく働ける職場 */}
-          <div className="mt-8 bg-white rounded-2xl shadow-lg overflow-hidden">
+          <div className="mt-8 bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-700/50 overflow-hidden">
             <div className="grid md:grid-cols-2 items-center">
               <div className="p-8">
-                <h4 className="text-2xl font-bold text-gray-900 mb-4">楽しく働ける職場</h4>
-                <p className="text-gray-600 leading-relaxed mb-6">
+                <h4 className="text-2xl font-bold text-white mb-4">楽しく働ける職場</h4>
+                <p className="text-gray-300 leading-relaxed mb-6">
                   お客様と一緒に目標に向かって取り組む中で、達成感と充実感を得られる仕事です。明るく活気のある職場で、やりがいを感じながら働けます。
                 </p>
                 <div className="space-y-2">
-                  <div className="flex items-center text-gray-700">
-                    <i className="fas fa-check text-green-500 mr-3"></i>
+                  <div className="flex items-center text-gray-200">
+                    <div className="w-4 h-4 bg-green-400 mr-3 flex items-center justify-center">
+                      <div className="w-2 h-1 bg-white transform rotate-45 translate-y-0.5"></div>
+                      <div className="w-1 h-2 bg-white transform -rotate-45 -translate-x-1 -translate-y-0.5"></div>
+                    </div>
                     <span>お客様の成長を間近で実感</span>
                   </div>
-                  <div className="flex items-center text-gray-700">
-                    <i className="fas fa-check text-green-500 mr-3"></i>
+                  <div className="flex items-center text-gray-200">
+                    <div className="w-4 h-4 bg-green-400 mr-3 flex items-center justify-center">
+                      <div className="w-2 h-1 bg-white transform rotate-45 translate-y-0.5"></div>
+                      <div className="w-1 h-2 bg-white transform -rotate-45 -translate-x-1 -translate-y-0.5"></div>
+                    </div>
                     <span>スタッフ同士の良好な関係</span>
                   </div>
-                  <div className="flex items-center text-gray-700">
-                    <i className="fas fa-check text-green-500 mr-3"></i>
+                  <div className="flex items-center text-gray-200">
+                    <div className="w-4 h-4 bg-green-400 mr-3 flex items-center justify-center">
+                      <div className="w-2 h-1 bg-white transform rotate-45 translate-y-0.5"></div>
+                      <div className="w-1 h-2 bg-white transform -rotate-45 -translate-x-1 -translate-y-0.5"></div>
+                    </div>
                     <span>継続的なスキルアップ機会</span>
                   </div>
                 </div>
@@ -320,56 +440,57 @@ app.get('/', (c) => {
       </section>
 
       {/* 募集要項 */}
-      <section id="recruitInfo" className="py-20 bg-white">
+      <section id="recruitInfo" className="py-20 bg-gray-800/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold text-gray-900 mb-4">募集要項</h3>
-            <p className="text-xl text-gray-600">詳細な条件・待遇について</p>
+            <h3 className="text-4xl font-bold text-white mb-4">募集要項</h3>
+            <p className="text-xl text-gray-300">詳細な条件・待遇について</p>
           </div>
           
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+          <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-700/50 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <tbody>
-                  <tr className="border-b border-gray-200">
-                    <td className="px-6 py-4 bg-gray-50 font-bold text-gray-900 w-1/4">職種</td>
-                    <td className="px-6 py-4 text-gray-700">パーソナルトレーナー（正社員）</td>
+                  <tr className="border-b border-gray-600">
+                    <td className="px-6 py-4 bg-gray-700 font-bold text-white w-1/4">職種</td>
+                    <td className="px-6 py-4 bg-gray-800 text-gray-200">パーソナルトレーナー（正社員）</td>
                   </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="px-6 py-4 bg-gray-50 font-bold text-gray-900">給与</td>
-                    <td className="px-6 py-4">
+                  <tr className="border-b border-gray-600">
+                    <td className="px-6 py-4 bg-gray-700 font-bold text-white">給与</td>
+                    <td className="px-6 py-4 bg-gray-800">
                       <div className="space-y-3">
-                        <div className="flex items-center justify-between bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                          <span className="font-medium text-blue-900">未経験者</span>
-                          <span className="font-bold text-xl text-blue-600">月給 268,000円</span>
+                        <div className="flex items-center justify-between bg-blue-600/20 p-4 rounded-lg border-l-4 border-blue-400 backdrop-blur-sm">
+                          <span className="font-medium text-blue-200">未経験者</span>
+                          <span className="font-bold text-xl text-blue-300">月給 268,000円</span>
                         </div>
-                        <div className="text-sm text-gray-600 ml-4">
+                        <div className="text-sm text-gray-300 ml-4">
                           基本給220,000円 + みなし残業手当48,000円
                         </div>
-                        <div className="flex items-center justify-between bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                          <span className="font-medium text-green-900">経験者</span>
-                          <span className="font-bold text-xl text-green-600">月給 300,000円</span>
+                        <div className="flex items-center justify-between bg-green-600/20 p-4 rounded-lg border-l-4 border-green-400 backdrop-blur-sm">
+                          <span className="font-medium text-green-200">経験者</span>
+                          <span className="font-bold text-xl text-green-300">月給 300,000円</span>
                         </div>
-                        <div className="text-sm text-gray-600 ml-4">
+                        <div className="text-sm text-gray-300 ml-4">
                           基本給252,000円 + みなし残業手当48,000円
                         </div>
                       </div>
                     </td>
                   </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="px-6 py-4 bg-gray-50 font-bold text-gray-900">賞与・手当</td>
-                    <td className="px-6 py-4">
-                      <ul className="space-y-2 text-gray-700">
+                  <tr className="border-b border-gray-600">
+                    <td className="px-6 py-4 bg-gray-700 font-bold text-white">賞与・手当</td>
+                    <td className="px-6 py-4 bg-gray-800">
+                      <ul className="space-y-2 text-gray-200">
                         <li className="flex items-center"><i className="fas fa-gift text-blue-500 mr-3"></i>賞与年2回（業績により変動）</li>
                         <li className="flex items-center"><i className="fas fa-chart-line text-green-500 mr-3"></i>各種インセンティブ制度</li>
+                        <li className="flex items-center"><i className="fas fa-arrow-up text-red-500 mr-3"></i>昇給・昇格制度（年1回・実力主義）</li>
                         <li className="flex items-center"><i className="fas fa-subway text-purple-500 mr-3"></i>交通費支給（上限あり）</li>
                         <li className="flex items-center"><i className="fas fa-home text-orange-500 mr-3"></i>住宅手当・家賃補助（近隣在住者対象）</li>
                       </ul>
                     </td>
                   </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="px-6 py-4 bg-gray-50 font-bold text-gray-900">勤務時間</td>
-                    <td className="px-6 py-4 text-gray-700">
+                  <tr className="border-b border-gray-600">
+                    <td className="px-6 py-4 bg-gray-700 font-bold text-white">勤務時間</td>
+                    <td className="px-6 py-4 bg-gray-800 text-gray-200">
                       <div className="flex items-center mb-2">
                         <i className="fas fa-clock text-blue-500 mr-3"></i>
                         <span>10:00～22:00（実働8時間・シフト制）</span>
@@ -377,36 +498,36 @@ app.get('/', (c) => {
                       <span className="text-sm text-gray-500">※みなし残業代は月20時間分を含む</span>
                     </td>
                   </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="px-6 py-4 bg-gray-50 font-bold text-gray-900">休日・休暇</td>
-                    <td className="px-6 py-4 text-gray-700">
+                  <tr className="border-b border-gray-600">
+                    <td className="px-6 py-4 bg-gray-700 font-bold text-white">休日・休暇</td>
+                    <td className="px-6 py-4 bg-gray-800 text-gray-200">
                       <div className="flex items-center">
-                        <i className="fas fa-calendar-alt text-green-500 mr-3"></i>
+                        <i className="fas fa-calendar-alt text-green-400 mr-3"></i>
                         <span>月8日休み（シフト制）、有給休暇、特別休暇、産前産後・育児休暇</span>
                       </div>
                     </td>
                   </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="px-6 py-4 bg-gray-50 font-bold text-gray-900">保険・福利厚生</td>
-                    <td className="px-6 py-4">
+                  <tr className="border-b border-gray-600">
+                    <td className="px-6 py-4 bg-gray-700 font-bold text-white">保険・福利厚生</td>
+                    <td className="px-6 py-4 bg-gray-800">
                       <div className="grid sm:grid-cols-2 gap-6">
                         <div>
-                          <h5 className="font-medium text-gray-900 mb-3 flex items-center">
-                            <i className="fas fa-shield-alt text-blue-500 mr-2"></i>
+                          <h5 className="font-medium text-white mb-3 flex items-center">
+                            <i className="fas fa-shield-alt text-blue-400 mr-2"></i>
                             法定福利厚生
                           </h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
+                          <ul className="text-sm text-gray-300 space-y-1">
                             <li>• 健康保険（協会けんぽ）</li>
                             <li>• 厚生年金保険</li>
                             <li>• 雇用保険・労災保険</li>
                           </ul>
                         </div>
                         <div>
-                          <h5 className="font-medium text-gray-900 mb-3 flex items-center">
-                            <i className="fas fa-star text-yellow-500 mr-2"></i>
+                          <h5 className="font-medium text-white mb-3 flex items-center">
+                            <i className="fas fa-star text-yellow-400 mr-2"></i>
                             STLiNE特典
                           </h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
+                          <ul className="text-sm text-gray-300 space-y-1">
                             <li>• ジム利用無料</li>
                             <li>• 資格取得支援制度</li>
                             <li>• 家族・友人優待制度</li>
@@ -416,26 +537,26 @@ app.get('/', (c) => {
                       </div>
                     </td>
                   </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="px-6 py-4 bg-gray-50 font-bold text-gray-900">応募資格</td>
-                    <td className="px-6 py-4">
-                      <ul className="space-y-2 text-gray-700">
-                        <li className="flex items-center"><i className="fas fa-graduation-cap text-blue-500 mr-3"></i>高校卒業以上</li>
-                        <li className="flex items-center"><i className="fas fa-heart text-red-500 mr-3"></i>トレーナー業務に興味がある方</li>
-                        <li className="flex items-center"><i className="fas fa-seedling text-green-500 mr-3"></i>未経験歓迎（研修制度完備）</li>
-                        <li className="flex items-center"><i className="fas fa-certificate text-purple-500 mr-3"></i>関連資格保有者優遇（NSCA、JATI等）</li>
-                        <li className="flex items-center"><i className="fas fa-users text-orange-500 mr-3"></i>人と接することが好きな方</li>
+                  <tr className="border-b border-gray-600">
+                    <td className="px-6 py-4 bg-gray-700 font-bold text-white">応募資格</td>
+                    <td className="px-6 py-4 bg-gray-800">
+                      <ul className="space-y-2 text-gray-200">
+                        <li className="flex items-center"><i className="fas fa-graduation-cap text-blue-400 mr-3"></i>高校卒業以上</li>
+                        <li className="flex items-center"><i className="fas fa-heart text-red-400 mr-3"></i>トレーナー業務に興味がある方</li>
+                        <li className="flex items-center"><i className="fas fa-seedling text-green-400 mr-3"></i>未経験歓迎（研修制度完備）</li>
+                        <li className="flex items-center"><i className="fas fa-certificate text-purple-400 mr-3"></i>関連資格保有者優遇（NSCA、JATI等）</li>
+                        <li className="flex items-center"><i className="fas fa-users text-orange-400 mr-3"></i>人と接することが好きな方</li>
                       </ul>
                     </td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 bg-gray-50 font-bold text-gray-900">勤務地</td>
-                    <td className="px-6 py-4 text-gray-700">
+                    <td className="px-6 py-4 bg-gray-700 font-bold text-white">勤務地</td>
+                    <td className="px-6 py-4 bg-gray-800 text-gray-200">
                       <div className="flex items-start">
-                        <i className="fas fa-map-marker-alt text-red-500 mr-3 mt-1"></i>
+                        <i className="fas fa-map-marker-alt text-red-400 mr-3 mt-1"></i>
                         <div>
-                          <span>東京・神奈川・埼玉・千葉エリアの各店舗</span><br />
-                          <span className="text-sm text-gray-500">※希望勤務地を考慮して配属決定</span>
+                          <span>東京・千葉エリアの各店舗</span><br />
+                          <span className="text-sm text-gray-400">※希望勤務地を考慮して配属決定</span>
                         </div>
                       </div>
                     </td>
@@ -448,201 +569,62 @@ app.get('/', (c) => {
       </section>
 
       {/* 応募・問い合わせ */}
-      <section id="application" className="py-20 bg-gray-50">
+      <section id="application" className="py-20 bg-gray-800/50 backdrop-blur-sm">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold text-gray-900 mb-4">応募・お問い合わせ</h3>
-            <p className="text-xl text-gray-600">お気軽にご連絡ください</p>
+            <h3 className="text-4xl font-bold text-white mb-4">応募・お問い合わせ</h3>
+            <p className="text-xl text-gray-300">公式LINEからお気軽にご連絡ください</p>
           </div>
           
-          {/* 問い合わせ方法の選択肢 */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {/* 応募フォーム */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-edit text-2xl text-blue-600"></i>
+          {/* 公式LINE問い合わせ専用 */}
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-white rounded-3xl shadow-xl p-12 text-center">
+              <div className="w-24 h-24 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-8">
+                <div className="text-white text-3xl font-bold">LINE</div>
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">応募フォーム</h4>
-              <p className="text-sm text-gray-600 mb-4">
-                正式な応募はこちらから<br />
-                詳細情報を入力できます
+              <h4 className="text-3xl font-bold text-gray-900 mb-6">公式LINE</h4>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                応募・質問・相談など、すべて公式LINEで承っております。<br />
+                お気軽にメッセージをお送りください。<br />
+                <span className="font-medium text-green-600">営業時間内にスタッフが丁寧にお答えいたします</span>
               </p>
-              <button 
-                onClick="document.querySelector('.application-form').scrollIntoView({behavior: 'smooth'})"
-                className="text-blue-600 font-medium hover:text-blue-700 text-sm"
-              >
-                下記フォームへ ↓
-              </button>
-            </div>
-            
-            {/* 公式LINE */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fab fa-line text-2xl text-green-600"></i>
+              
+              <div className="space-y-4 mb-8">
+                <div className="bg-green-50 rounded-xl p-6">
+                  <div className="flex items-center justify-center mb-3">
+                    <i className="fas fa-clock text-green-600 mr-2"></i>
+                    <span className="font-bold text-gray-800">受付時間</span>
+                  </div>
+                  <p className="text-gray-700">月〜日 10:00-20:00</p>
+                </div>
+                
+                <div className="bg-blue-50 rounded-xl p-6">
+                  <div className="flex items-center justify-center mb-3">
+                    <i className="fas fa-comments text-blue-600 mr-2"></i>
+                    <span className="font-bold text-gray-800">対応内容</span>
+                  </div>
+                  <p className="text-gray-700">応募受付・質問・相談・面接日程調整など</p>
+                </div>
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">公式LINE</h4>
-              <p className="text-sm text-gray-600 mb-4">
-                気軽な質問・相談はこちら<br />
-                すぐに回答いたします
-              </p>
+              
               <a 
                 href="https://lin.ee/rYDTWht" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-green-600 font-medium hover:text-green-700 text-sm"
+                className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-12 rounded-2xl text-xl transition-all transform hover:scale-105 shadow-lg mb-6"
               >
-                LINEで相談 <i className="fas fa-external-link-alt text-xs ml-1"></i>
+                <div className="w-6 h-6 bg-white rounded mr-3 flex items-center justify-center">
+                  <div className="text-green-500 text-xs font-bold">L</div>
+                </div>
+                LINEで応募・相談する
+                <i className="fas fa-external-link-alt text-sm ml-2"></i>
               </a>
-            </div>
-            
-            {/* 公式Instagram */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fab fa-instagram text-2xl text-purple-600"></i>
-              </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">公式Instagram</h4>
-              <p className="text-sm text-gray-600 mb-4">
-                職場の雰囲気をチェック<br />
-                DMでも気軽にご相談
+              
+              <p className="text-sm text-gray-500">
+                ※メッセージ送信は無料です。お気軽にどうぞ！
               </p>
-              <a 
-                href="https://www.instagram.com/stline__official" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-purple-600 font-medium hover:text-purple-700 text-sm"
-              >
-                Instagramを見る <i className="fas fa-external-link-alt text-xs ml-1"></i>
-              </a>
             </div>
           </div>
-          
-          {/* 応募フォーム */}
-          <div className="application-form">
-            <div className="text-center mb-8">
-              <h4 className="text-2xl font-bold text-gray-900 mb-2">正式応募フォーム</h4>
-              <p className="text-gray-600">下記の項目をご入力ください</p>
-            </div>
-          
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
-                    氏名 <span className="text-red-500">*</span>
-                  </label>
-                  <input 
-                    type="text" 
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="山田太郎"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
-                    フリガナ <span className="text-red-500">*</span>
-                  </label>
-                  <input 
-                    type="text" 
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="ヤマダタロウ"
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
-                    メールアドレス <span className="text-red-500">*</span>
-                  </label>
-                  <input 
-                    type="email" 
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="example@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
-                    電話番号 <span className="text-red-500">*</span>
-                  </label>
-                  <input 
-                    type="tel" 
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="090-1234-5678"
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
-                    経験区分 <span className="text-red-500">*</span>
-                  </label>
-                  <select 
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">選択してください</option>
-                    <option value="未経験">未経験</option>
-                    <option value="経験者">経験者</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
-                    希望勤務地 <span className="text-red-500">*</span>
-                  </label>
-                  <select 
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">選択してください</option>
-                    <option value="東京">東京</option>
-                    <option value="神奈川">神奈川</option>
-                    <option value="埼玉">埼玉</option>
-                    <option value="千葉">千葉</option>
-                    <option value="その他">その他・相談</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">
-                  保有資格・経験
-                </label>
-                <textarea 
-                  rows={4}
-                  placeholder="保有している資格や経験について記載してください（NSCA、JATI、実務経験など）"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                ></textarea>
-              </div>
-
-              <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">
-                  志望動機・自己PR
-                </label>
-                <textarea 
-                  rows={4}
-                  placeholder="STLiNEへの志望動機や自己PRをご記入ください"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                ></textarea>
-              </div>
-
-              <div className="text-center pt-6">
-                <button 
-                  type="submit"
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-12 rounded-lg text-lg transition-all transform hover:scale-105 shadow-lg"
-                >
-                  応募する
-                </button>
-                <p className="text-sm text-gray-500 mt-4">
-                  応募いただいた内容は、採用業務以外には使用いたしません。
-                </p>
-              </div>
-            </form>
-          </div>
-        </div>
         </div>
       </section>
 
@@ -711,8 +693,8 @@ app.get('/', (c) => {
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-gray-300 hover:text-pink-400 transition-colors group"
                 >
-                  <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center group-hover:from-purple-400 group-hover:to-pink-400 transition-all">
-                    <i className="fab fa-instagram text-sm"></i>
+                  <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center group-hover:from-purple-400 group-hover:to-pink-400 transition-all">
+                    <div className="text-white text-xs font-bold">IG</div>
                   </div>
                   <span className="text-sm">公式Instagram（職場の様子）</span>
                 </a>
@@ -724,19 +706,19 @@ app.get('/', (c) => {
                   href="https://lin.ee/rYDTWht" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center transition-colors"
+                  className="w-10 h-10 bg-green-500 hover:bg-green-400 rounded-xl flex items-center justify-center transition-colors"
                   title="公式LINE"
                 >
-                  <i className="fab fa-line text-white"></i>
+                  <div className="text-white text-xs font-bold">L</div>
                 </a>
                 <a 
                   href="https://www.instagram.com/stline__official" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 rounded-full flex items-center justify-center transition-all"
+                  className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 rounded-xl flex items-center justify-center transition-all"
                   title="公式Instagram"
                 >
-                  <i className="fab fa-instagram text-white"></i>
+                  <div className="text-white text-xs font-bold">IG</div>
                 </a>
               </div>
             </div>
@@ -750,29 +732,14 @@ app.get('/', (c) => {
       {/* JavaScript */}
       <script>
         {`
-          function scrollToApplication() {
-            document.getElementById('application').scrollIntoView({ 
-              behavior: 'smooth' 
-            });
-          }
-          
           function scrollToRecruitInfo() {
             document.getElementById('recruitInfo').scrollIntoView({ 
               behavior: 'smooth' 
             });
           }
           
-          // フォーム送信処理
+          // スクロール時のヘッダー効果
           document.addEventListener('DOMContentLoaded', function() {
-            const form = document.querySelector('form');
-            if (form) {
-              form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('応募ありがとうございます。内容を確認後、3営業日以内にご連絡いたします。');
-              });
-            }
-            
-            // スクロール時のヘッダー効果
             let lastScrollY = window.scrollY;
             const header = document.querySelector('header');
             
@@ -787,6 +754,7 @@ app.get('/', (c) => {
           });
         `}
       </script>
+      </div>
     </div>
   )
 })
